@@ -8,8 +8,8 @@
   "license": "MIT",
   "private": false,
   "main": [
-      'src/material-app.js',
-      'src/material-app.css'
+      "src/material-app.js",
+      "src/material-app.css"
   ],
   "ignore": [
     "**/.*",
