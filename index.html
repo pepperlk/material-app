@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="MatreialAppDemo" ng-controller="RootCtrl">
+<head>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title></title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,100italic,100,300' rel='stylesheet' type='text/css'>
+
+    <link href="/bower_components/angular-material/angular-material.min.css" rel="stylesheet" />
+
+    <link href="/bower_components/angular-material/default-theme.css" rel="stylesheet" />
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/src/material-app.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <app-header title="appTitle" >
+        <app-title>
+            Application
+        </app-title>
+
+            <!--<app-action icon="fa-plus" title="Add User" ng-show="!hideUser" />-->
+       
+            <menu-item  icon="fa-plus" title="Add 1" ng-show="true" ng-click="addProject()" />
+      <menu-item icon="fa-plus" title="Add 2" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add 3" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add 4" ng-show="true" ng-click="addProject()" />
+         <!-- <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />
+        <menu-item icon="fa-plus" title="Add Project" ng-show="true" ng-click="addProject()" />-->
+           
+      
+    </app-header>
+    <md-content class="md-padding" ng-view>
+       
+       
+    </md-content>
+    
+    <script type="text/ng-template" id="add.html">
+    <h1>Add Page</h1>
+    </script>
+    
+    <script type="text/ng-template" id="root.html">
+    
+    <app-actions>
+    <app-action icon="fa-plus" title="Add" ng-show="true" ng-click="addProject()" />
+</app-actions>
+
+
+<h1>Root</h1>
+
+
+    
+    </script>
+
+
+
+    
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+
+   
+    <script src="/src/material-app.js"></script>
+    <script>
+        
+
+
+
+var app = angular.module('MatreialAppDemo', ['ngMaterial', 'ngMaterialApp', 'ngRoute']);
+
+app.run(['$rootScope', '$mdHeader', function ($rootScope, $mdHeader) {
+    
+
+
+}]);
+
+app.config(['$routeProvider', '$locationProvider', '$provide', function ($routeProvider, $locationProvider, $provide) {
+
+   
+
+    
+
+    $routeProvider.
+     when('/', {
+         templateUrl: 'root.html',
+        
+     }).
+     when('/add', {
+         templateUrl: 'add.html',
+         controller: 'AddCtrl'
+     }).
+     otherwise({
+         redirectTo: '/'
+     });
+}]);
+
+app.controller('RootCtrl', ['$scope', '$mdHeader', '$timeout', '$mdSidenav',
+    function ($scope, $mdHeader, $timeout, $mdSidenav) {
+
+
+
+        $scope.$on('$search', function (e, query) {
+            console.log('Search: ' + query);
+        });
+
+        $scope.addProject = function () {
+            $mdHeader.navTo("/add");
+
+
+        }
+
+      
+
+        $scope.loadingText = 'Loading';
+
+        console.log('StartUp 2');
+
+        $scope.projects = [
+            1, 2, 3, 4, 5
+        ];
+
+    }]);
+
+
+app.controller('AddCtrl', ['$scope', '$mdHeader', '$timeout', '$mdSidenav',
+    function ($scope, $mdHeader, $timeout, $mdSidenav) {
+        $mdHeader.setTitle("LOADING...");
+        $mdHeader.isChild();
+        $mdHeader.startWork();
+        $timeout(function () {
+            $mdHeader.setTitle("Project 12234");
+            $mdHeader.stopWork();
+        }, 800);
+
+    }]);
+    </script>
+</body>
+</html>
+
+
