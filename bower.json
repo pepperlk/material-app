@@ -6,7 +6,11 @@
     "Lee Pepper <pepperlk@gmail.com>"
   ],
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "main": [
+      'src/material-app.js',
+      'src/material-app.css'
+  ]
   "ignore": [
     "**/.*",
     "node_modules",
