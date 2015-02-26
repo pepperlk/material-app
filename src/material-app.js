@@ -78,8 +78,7 @@ angular.module('ngMaterialApp', ['ngMaterial'])
         return {
             //templateUrl: '/app/directives/appHeader.html',
             template:
-            
-            `          
+              (function () {/*          
 <div>
     <div class="md-actions-desktop " hide-gt-sm>
         <md-button ng-show="action.ngShow" class="md-fab md-primary" aria-label="{{action.title}}" ng-repeat="action in actions" ng-click="action.ngClick()">
@@ -178,7 +177,7 @@ angular.module('ngMaterialApp', ['ngMaterial'])
     </div>
 </div>
 
-            `,
+            */}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1],
             restrict: "E",
             scope: {
                 //title: '=',
